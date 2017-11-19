@@ -11,30 +11,22 @@ $(document).ready(function(){
     var game = new game();
 });
 
-$(window).keydown(function(e){
+$(document).keydown(function(e){
     var ella = $('#ella');
-    var position = ella.position();
-    var amt = 10;
-    var pos = 0;
+    var speed = 250;
+
+    switch (e.which) {
+        case 38:
+            ella.stop().animate({
+                top: '-=25'
+            }, speed); //up arrow key
+            break;
+        case 40:
+            ella.stop().animate({
+                top: '+=25'
+            }, speed); //bottom arrow key
+            break;
+        }
     
-    // 38 = Up
-    if ( e.which == 38 ) {
-        e.preventDefault();
-        console.log('pressing UP');
-
-        pos = amt - position.top;
-        ella.css('top', '-' + pos + 'px');
-        $('#info').html('position: ' + position.top + '<br>new pos: ' + pos);
-    }
-
-    // 40 = Down
-    if (e.which == 40) {
-        e.preventDefault();
-        console.log('pressing DOWN');
-
-        pos = amt + position.top;
-        ella.css('top', pos + 'px');
-        $('#info').html('position: ' + position.top + '<br>new pos: ' + pos);
-    }
-
+    // $(document).unbind('keypress');
 });

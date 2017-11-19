@@ -5,6 +5,7 @@ $(document).ready(function(){
     
         // set background color
         gameWrapper.css('background','#c706ff');
+
     }
     
     var game = new game();
@@ -12,16 +13,28 @@ $(document).ready(function(){
 
 $(window).keydown(function(e){
     var ella = $('#ella');
-    var amt = 2;
+    var position = ella.position();
+    var amt = 10;
+    var pos = 0;
+    
     // 38 = Up
-    if (e.keyCode = 38) {
+    if ( e.which == 38 ) {
+        e.preventDefault();
         console.log('pressing UP');
-        ella.css('bottom', '-2%');
+
+        pos = amt - position.top;
+        ella.css('top', '-' + pos + 'px');
+        $('#info').html('position: ' + position.top + '<br>new pos: ' + pos);
     }
 
     // 40 = Down
-    if (e.keyCode = 40) {
+    if (e.which == 40) {
+        e.preventDefault();
         console.log('pressing DOWN');
-        ella.css('bottom', '2%');
+
+        pos = amt + position.top;
+        ella.css('top', pos + 'px');
+        $('#info').html('position: ' + position.top + '<br>new pos: ' + pos);
     }
+
 });

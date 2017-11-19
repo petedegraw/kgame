@@ -43,13 +43,13 @@ gulp.src('./*.html')
 });
 
 gulp.task('scripts', function() {
-gulp.src('**/*.js')
+gulp.src('js/*.js')
   .pipe(connect.reload());
 });
 
 gulp.task('watch', function() {
 gulp.watch(['./*.html'], ['html']);
-gulp.watch(['**/*.js'], ['scripts']);
+gulp.watch(['js/*.js'], ['scripts']);
 gulp.watch(['./sass/*.scss'], ['sass', 'minify-css']);
 });
 
